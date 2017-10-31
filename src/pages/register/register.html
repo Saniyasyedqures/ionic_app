@@ -1,0 +1,55 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  <button ion-button menuToggle>
+      <ion-icon name="md-more"></ion-icon>
+    </button>
+     <ion-title>Register</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form #form="ngForm" (ngSubmit)="registerForm(form)" novalidate>
+      <ion-item>
+        <ion-label>Name*</ion-label>
+        <ion-input type="text" required [(ngModel)]="todo.name" ngControl="name" name="name"></ion-input>
+      </ion-item>
+         <ion-item>
+        <ion-label>DOB</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="todo.dob" ngControl="dob" name="dob"></ion-datetime>
+      </ion-item>
+        <ion-item>
+        <ion-label>Photo</ion-label>
+        <ion-input type="file" [(ngModel)]="todo.photo" ngControl="photo" name="photo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address*</ion-label>
+        <ion-textarea [(ngModel)]="todo.address" ngControl="address" required name="address"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pincode*</ion-label>
+        <ion-input type="number" required [(ngModel)]="todo.pincode" ngControl="pincode" name="pincode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone*</ion-label>
+        <ion-input type="text" required [(ngModel)]="todo.phone" ngControl="phone" name="phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email*</ion-label>
+        <ion-input type="email" required [(ngModel)]="todo.email" ngControl="email" name="email"></ion-input>
+      </ion-item>
+      <div class="col">
+        <br><br>
+      <button ion-button type="submit" block class="submit">Submit</button>
+      </div>
+    </form>
+
+</ion-content>
