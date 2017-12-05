@@ -10,4 +10,14 @@ page-current-affairs {
      text-overflow: unset;
     white-space: unset; 
     }
+
+ }
+
+ .item-md p {
+    margin: 0 0 2px;
+    overflow: inherit;
+    font-size: 1.4rem;
+    line-height: normal;
+    text-overflow: inherit;
+    color: #ee1d23;
 }

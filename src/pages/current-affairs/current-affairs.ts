@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams , LoadingController  } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { DetailsPage } from '../details/details';
 
 /**
  * Generated class for the CurrentAffairsPage page.
@@ -13,12 +16,39 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'current-affairs.html',
 })
 export class CurrentAffairsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    current: any;
+	filter = "-id";
+	loading:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http,public loadingCtrl: LoadingController) {
+	   this.presentLoadingDefault();	  
+	   this.http.get('http://igapi.ignitedminds.net/api/index.php?page=getCurrent').map(res => res.json()).subscribe(data => {
+       this.current = data ; 
+       this.endLoading();
+    });
+  }
+  
+  openNews (current,id,title){
+	  this.navCtrl.push(DetailsPage,{
+		  id:id,
+		  news:current,
+		  title:title
+	  })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CurrentAffairsPage');
-  }
+  presentLoadingDefault() {
+   this.loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+  this.loading.present();
+}
+ endLoading(){
+	  this.loading.dismiss();
+ }
+ apply(id){
+	 this.filter  = id;
+ }
+
 
 }
+
+

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle right>
       <ion-icon name="md-more"></ion-icon>
     </button>
    <img src="assets/imgs/logo1.png" > 
@@ -8,11 +8,17 @@
 </ion-header>
 
 <ion-content padding>
-<img src="assets/imgs/slider1.jpg" style="width: 100%;height: 217px;">
+  <ion-card >
+<ion-slides pager="true">
+    <ion-slide *ngFor="let n of imagesList" style="margin-top: 10px;">
+   <img src="http://igapi.ignitedminds.net/uploads/{{n.img}}" class="sliderImg">
+  </ion-slide>
 
+</ion-slides>
 
+</ion-card>
 
-<ion-card>
+<ion-card class="cardsTab" style="margin-top: 4px;">
 <div class="card">
    <div class="container nav-flex">
       <div class="wrapper" (click)="goToNews()">
@@ -42,10 +48,10 @@
          </a>
       </div>
 	  
-	  <div class="wrapper">
+	  <div class="wrapper" (click)="goToCoursesPage()">
          <a class="reset">
             <div class="iconWrapper bc-F">
-               <ion-icon name="refresh-circle"></ion-icon>
+               <ion-icon name="document"></ion-icon>
             </div>
             <span>Courses</span>
          </a>
@@ -63,7 +69,7 @@
       <div class="wrapper" (click)="goToContactus()">
          <a class="reset">
             <div class="iconWrapper bc-F">
-               <ion-icon name="contact"></ion-icon>
+               <ion-icon name="call"></ion-icon>
             </div>
             <span>Contact us</span>
          </a>
@@ -75,18 +81,18 @@
 </ion-card>
 
       <ion-card>
-	    <ion-card-header>
-		 <label style="color: #ee1d23;font-size: 20px;font-weight: bold;">  <ion-icon name="list-box" role="img" class="icon icon-md ion-md-list-box" aria-label="list box" ng-reflect-name="list-box"></ion-icon> QUICK LINKS </label>
+	    <ion-card-header style="margin-top: 20px;">
+		 <label style="color: #ee1d23;font-size: 17px;font-weight: bold;margin-left:10px">  <ion-icon name="list-box" role="img" class="icon icon-md ion-md-list-box" aria-label="list box" ng-reflect-name="list-box"></ion-icon> Quick Links </label>
 		</ion-card-header>
 		
-		<div class="card mt-8">
+		<div class=" mt-8">
 
-   <a  class="reset">
+   <a  class="reset" (click)="goToAbout()">
       <div class="discounts pFix">
          <div class="discIcon">
            <ion-icon name="link"></ion-icon>
          </div>
-         <span class="navigation-link">Welcome to ignited minds</span>
+         <span class="navigation-link">About us</span>
          <div class="nav-icon">
             <svg width="18px" height="18px">
                <g id="chevron-right">
@@ -97,12 +103,12 @@
       </div>
    </a>
    
-   <a  class="reset">
+   <a  class="reset" (click)="goLocation()">
       <div class="discounts pFix">
          <div class="discIcon">
            <ion-icon name="link"></ion-icon>
          </div>
-         <span class="navigation-link">What we offer this month?</span>
+         <span class="navigation-link">Locations</span>
          <div class="nav-icon">
             <svg width="18px" height="18px">
                <g id="chevron-right">
@@ -113,12 +119,12 @@
       </div>
    </a>
    
-   <a  class="reset">
+      <a  class="reset" (click)="goTimeSchedule()">
       <div class="discounts pFix">
          <div class="discIcon">
            <ion-icon name="link"></ion-icon>
          </div>
-         <span class="navigation-link">Ignited minds current affairs</span>
+         <span class="navigation-link">Time Schedule</span>
          <div class="nav-icon">
             <svg width="18px" height="18px">
                <g id="chevron-right">
@@ -129,21 +135,7 @@
       </div>
    </a>
    
-   <a  class="reset">
-      <div class="discounts pFix">
-         <div class="discIcon">
-           <ion-icon name="link"></ion-icon>
-         </div>
-         <span class="navigation-link">Special offers for students</span>
-         <div class="nav-icon">
-            <svg width="18px" height="18px">
-               <g id="chevron-right">
-                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" style="fill: #757575"></path>
-               </g>
-            </svg>
-         </div>
-      </div>
-   </a>
+
 </div>
 	  </ion-card>              				
 

@@ -25689,12 +25689,27 @@ ion-navbar.toolbar {
   background: #ee1d23;
 }
 
+.toolbar-title-md {
+  color: #ed1c22 !important;
+}
+
+.bar-button-menutoggle-md[right] {
+  color: #ed1c22 !important;
+}
+
+.bar-button-default-md {
+  color: #ed1c22 !important;
+}
+
+ion-app.md [padding] .scroll-content {
+  background: #fff !important;
+}
+
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
   color: #ffffff;
   background-color: transparent;
-  float: right;
   position: absolute;
-  right: 0px;
+  z-index: 99999999999999999999999999;
 }
 
 .toolbar-content-md {
@@ -25711,6 +25726,10 @@ ion-navbar.toolbar {
   text-align: center;
 }
 
+.toolbar-title-md {
+  font-size: 15px !important;
+}
+
 ion-slides {
   display: block;
   width: 100%;
@@ -25720,6 +25739,19 @@ ion-slides {
 ion-app.md [padding] .scroll-content {
   padding: 0px;
   background: #ee1d23;
+}
+
+page-about-us .scroll-content {
+  background: #fff !important;
+}
+
+page-contact .address {
+  color: #ee1d23;
+}
+
+page-contact #map {
+  width: 100%;
+  height: 31%;
 }
 
 .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
@@ -25749,6 +25781,12 @@ ion-app.md [padding] .scroll-content {
   padding: 0 6px;
 }
 
+page-courses ion-label {
+  overflow: unset;
+  text-overflow: unset;
+  white-space: unset;
+}
+
 page-current-affairs .icons {
   float: right;
 }
@@ -25757,6 +25795,40 @@ page-current-affairs ion-label {
   overflow: unset;
   text-overflow: unset;
   white-space: unset;
+}
+
+.item-md p {
+  margin: 0 0 2px;
+  overflow: inherit;
+  font-size: 1.4rem;
+  line-height: normal;
+  text-overflow: inherit;
+  color: #ee1d23;
+}
+
+page-details .scroll-content {
+  background: #fff !important;
+}
+
+page-details .toolbar-title-md {
+  padding: 0 50px;
+  font-size: 15px;
+}
+
+page-details ion-card-header {
+  overflow: unset;
+  text-overflow: unset;
+  white-space: unset;
+}
+
+page-details b, page-details strong {
+  font-weight: bold;
+  /* color: #f04146; */
+  padding: 8px;
+}
+
+page-downloads .scroll-content {
+  background: #fff !important;
 }
 
 .toolbar-title-md {
@@ -25773,6 +25845,34 @@ page-current-affairs ion-label {
   position: absolute;
   left: 0px;
   top: -15px;
+}
+
+page-home ion-slides {
+  margin-top: -10px;
+}
+
+page-home .swiper-container-horizontal > .swiper-pagination-bullets {
+  bottom: 25px;
+}
+
+page-home .swiper-pagination-bullet-active {
+  background: #eb1b20;
+}
+
+page-home ion-card.cardsTab.card.card-md {
+  margin-top: -9px;
+}
+
+page-home .sliderImg {
+  width: 100%;
+  height: 217px;
+  -o-object-fit: fill;
+  object-fit: fill;
+}
+
+.toolbar-background-md {
+  border-color: #ed1c22;
+  background: #fff;
 }
 
 .toolbar-content-md {
@@ -25829,7 +25929,7 @@ page-current-affairs ion-label {
 }
 
 .activeTab {
-  border-bottom: 2px solid #EA2330;
+  border-bottom: 2px solid #eb1b20;
 }
 
 .home {
@@ -25883,12 +25983,14 @@ page-current-affairs ion-label {
   -webkit-flex-basis: 33%;
   -ms-flex-preferred-size: 33%;
   flex-basis: 33%;
-  padding: 20px 0;
+  padding: 8px 0;
   text-align: center;
 }
 
 .bc-F {
-  background: #ea2330;
+  background: #eb1b20;
+  -webkit-box-shadow: 1px 0px 5px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 0px 5px 3px rgba(0, 0, 0, 0.3);
 }
 
 .bc-H {
@@ -26104,7 +26206,7 @@ page-current-affairs ion-label {
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #ea2330;
+  color: #eb1b20;
   font-size: 14px;
   margin: 10px 0 10px 0;
   text-decoration: none;
@@ -26190,12 +26292,27 @@ page-current-affairs ion-label {
 }
 
 .bc-F {
-  background: #ee1d23;
+  background: #eb1b20;
 }
 
 .iconWrapper > ion-icon {
   color: #fff;
-  font-size: 32px;
+  font-size: 36px;
+  padding: 4px;
+}
+
+.card-header-md {
+  font-size: 1.6rem;
+  color: #222;
+  padding: 5px;
+}
+
+.iconWrapper {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 3px;
+  margin: 1px auto 8px;
 }
 
 page-news .icons {
@@ -26208,10 +26325,39 @@ page-news ion-label {
   white-space: unset;
 }
 
+page-news .scroll-content {
+  background: #fff !important;
+}
+
+.item-md p {
+  margin: 0 0 2px;
+  overflow: inherit;
+  font-size: 1.4rem;
+  line-height: normal;
+  text-overflow: inherit;
+  color: #ee1d23;
+}
+
 page-register .scroll-content {
   background: #fff !important;
 }
 
 page-register .submit {
   background: #ee1d23;
+}
+
+page-time ion-row.active {
+  background-color: #f5f5f5;
+}
+
+page-time ion-row.success {
+  background-color: #dff0d8;
+}
+
+page-time ion-row.warning {
+  background-color: #fcf8e3;
+}
+
+page-time ion-row.error {
+  background-color: #f2dede;
 }

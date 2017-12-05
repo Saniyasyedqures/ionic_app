@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage,Platform, NavController, NavParams } from 'ionic-angular';
-import {Transfer, TransferObject} from '@ionic-native/transfer';
-import {File} from '@ionic-native/file';
-declare var cordova:any;
+import { IonicPage, Platform, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { Transfer, TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+declare var cordova: any;
 
 @IonicPage()
 @Component({
@@ -15,73 +17,31 @@ export class DownloadsPage {
   searchQuery: string = '';
   items: any;
   storageDirectory: string = '';
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform, private transfer: Transfer, private file: File) {
-	  this.initializeItems();
+  loading: any;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public platform: Platform,
+    private transfer: Transfer,
+    private file: File, public http: Http,
+    public loadingCtrl: LoadingController,
+    private alertCtrl: AlertController) {
+    this.initializeItems();
   }
 
-    initializeItems() {
-    this.items = [
-		{
-			title:"Economy Notes(August 21, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/economy-notes.pdf"
-		},
-		{
-			title:"Sustainable Development ( August 19, 2017 )",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Sustainable-Development.pdf"
-		},
-		{
-			title:"MISSION INDRADHANUSH (August 19, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/MISSION-INDRADHANUSH.pdf"
-		},
-		{
-			title:"Social Sector Initiatives 2(August 18, 2017 ))",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Back-UPSocial-Sector-Initiatives.pdf"
-		},
-		{
-			title:"Social Sector Initiatives(August 17, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Social-Sector-Initiatives.pdf"
-		},
-		{
-			title:"Demography 2 (August 16, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Demography-2.pdf"
-		},
-		{
-			title:"Financial Inclusion(August 16, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Financial-Inclusion.pdf"
-		},
-		{
-			title:"Syllabus for SI 2017",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Syllabus-for-SI_2017.pdf"
-		},
-		{
-			title:"NPA and Demography(august 14, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/NPA-and-Demography.pdf"
-		},
-		{
-			title:"Goods and Services Tax(Read Thoroughly)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Goods-and-Services-Tax.pdf"
-		},
-		{
-			title:"Inflation(August 11, 2017) The first two pages are FDI related",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Inflation.pdf"
-		},
-		{
-			title:"Budget FDI FII Tax(August-09-2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/Budget.pdf"
-		},
-		{
-			title:"WTO and Accounts of India (August 08, 2017)",
-			url:"http://www.ignitedminds.net/wp-content/uploads/2017/01/WTO-and-Accounts-of-India.pdf"
-		},
-    ];
+  initializeItems() {
+    this.presentLoadingDefault();
+    this.http.get('http://igapi.ignitedminds.net/api/index.php?page=getDownload').map(res => res.json()).subscribe(data => {
+      this.items = data;
+      this.endLoading();
+    });
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DownloadsPage');
   }
-  
-   getItems(ev: any) {
+
+  getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeItems();
 
@@ -96,27 +56,51 @@ export class DownloadsPage {
     }
   }
 
-  downLoad(url,title){
-   this.platform.ready().then(() => {
+  downLoad(urlFile, title) {
+
+    this.platform.ready().then(() => {
 
       const fileTransfer: TransferObject = this.transfer.create();
 
-      const imageLocation = url;
+      const url = urlFile;
 
-      fileTransfer.download(imageLocation, this.storageDirectory + title +'.pdf').then((entry) => {
-  
+      fileTransfer.download(url, this.file.dataDirectory + "ignitedMinds/" + title + '.pdf').then((entry) => {
+
+        const alertSuccess = this.alertCtrl.create({
+          title: "Download Succeeded!",
+          subTitle: "File was successfully downloaded",
+          buttons: ['Ok']
+        });
+
+        alertSuccess.present();
 
       }, (error) => {
 
-        
+        const alertFailure = this.alertCtrl.create({
+          title: `Download Failed!`,
+          subTitle: `File was not successfully downloaded. Error code:`,
+          buttons: ['Ok']
+        });
+
+        alertFailure.present();
 
       });
 
     });
 
   }
-  
+
   goBack() {
-	   this.navCtrl.pop(); 
+    this.navCtrl.pop();
+  }
+
+  presentLoadingDefault() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+  endLoading() {
+    this.loading.dismiss();
   }
 }

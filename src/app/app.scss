@@ -7,12 +7,28 @@
     background: #ee1d23;
 }
 
+.toolbar-title-md {
+color: #ed1c22 !important;
+}
+
+.bar-button-menutoggle-md[right] {
+color: #ed1c22 !important;
+}
+
+.bar-button-default-md{
+    color: #ed1c22 !important;
+}
+
+ion-app.md [padding] .scroll-content {
+    background: #fff !important;
+}
+
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
     color: #ffffff;
     background-color: transparent;
-    float: right;
+
     position: absolute;
-    right: 0px;
+	    z-index: 99999999999999999999999999;
 }
 
 .toolbar-content-md {
@@ -27,6 +43,11 @@
     min-width: 0;
     max-width: 100%;
     text-align: center;
+    
+}
+
+.toolbar-title-md {
+font-size: 15px !important;
 }
 
 
@@ -40,3 +61,4 @@ ion-app.md [padding] .scroll-content {
     padding: 0px;
     background: #ee1d23;
 }
+

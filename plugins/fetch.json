@@ -54,5 +54,39 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-push@^2.0.0"
+        },
+        "is_top_level": true,
+        "variables": {
+            "SENDER_ID": "783809077735"
+        }
+    },
+    "cordova-plugin-autostart": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-autostart"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat@^1.1.0"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

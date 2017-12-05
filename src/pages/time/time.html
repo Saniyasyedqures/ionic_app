@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="md-more"></ion-icon>
+    </button>
+    <ion-title>Time Schedule</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+<ion-card *ngFor="let n of news">
+  <ion-card-header>
+    {{n.title}}
+  </ion-card-header>
+  <ion-card-content [innerHTML]="n.content">
+ 
+  </ion-card-content>
+</ion-card>
+  
+
+</ion-content>

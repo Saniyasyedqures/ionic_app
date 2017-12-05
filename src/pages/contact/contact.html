@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-  <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="md-more"></ion-icon>
     </button>
     <ion-title>Contact Us</ion-title>
@@ -17,104 +17,76 @@
 
 
 <ion-content>
-
-
-
-  <ion-segment [(ngModel)]="menu">
-    <ion-segment-button value="civil">
-      Civil Service
-    </ion-segment-button>
-    <ion-segment-button value="jee">
-      JEE, NEET, JKCET 
-    </ion-segment-button>
-  </ion-segment>
-
-
-<div [ngSwitch]="menu">
-  <ion-list *ngSwitchCase="'civil'">
-<ion-card>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d211439.4686697148!2d74.728271!3d34.101757!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8848d4a97cdefe3!2sIgnited+Minds+-+Civil+Service+IAS%2FKAS+Coaching+Center+%7C+Coaching+for+SSB+Banking+Exams+in+Srinagar!5e0!3m2!1sen!2sin!4v1509382320163" frameborder="0" style="width: 100%;height: 290px;" allowfullscreen></iframe>
-  <ion-card-content>
-    <ion-card-title>
-       Address : 
+  <ion-card *ngFor="let n of contactUs">
+ <!--<img  src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=570x300&scale=2&maptype=roadmap&markers=color:red%7Clabel:S%7C{{n.lat}},{{n.lang}}">-->
+    <ion-card-content>
+      <ion-card-title>
+       <p class="address"> Address</p>
       </ion-card-title>
-    <p>
-     <b> Head Office : </b> Ignited Minds, Opposite Lake City Plaza, Karan Nagar, Srinagar-190010 <br>
-	
-    </p>
-	
-	<ion-list>
-  <ion-item>
-    <h2>+91 0194-2503227</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2>+91 9070898007</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2>+91 979679787</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2>+91 9697954618</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-  <ion-item>
-    <h2>iminds30@gmail.com</h2>
-    <button ion-button clear item-end>   <ion-icon name="mail"></ion-icon></button>
-  </ion-item>
-</ion-list>
-  </ion-card-content>
-</ion-card>
-  </ion-list>
+      <p>
+        {{n.address}}
+      </p>
 
-  <ion-list *ngSwitchCase="'jee'">
-<ion-card>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d845810.9607856789!2d74.84453436227197!3d34.09644525539076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x55882598035ecc80!2sIgnited+Minds+-+JEE%2C+NEET%2C+JKCET+Coaching+Centres+%7C+Coaching+for+11th+%26+12th+Classes!5e0!3m2!1sen!2sin!4v1509385149584" frameborder="0" style="width: 100%;height: 290px;" allowfullscreen></iframe>
-  <ion-card-content>
-    <ion-card-title>
-       Address : 
-      </ion-card-title>
-    <p>
-     <b> Branch Office : </b> Ignited Minds, Opposite Gee-Enn Sons, Behind 14th Avenue, Parraypora, Srinagar-190005 <br>
-	
-    </p>
-	
-	<ion-list>
-  <ion-item>
-    <h2>+91 9906463640</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2>+91 9419247967</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2> +91 9796979787</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-    <ion-item>
-    <h2> +91 9796133018</h2>
-    <button ion-button clear item-end>  <ion-icon name="call"></ion-icon></button>
-  </ion-item>
-  
-  <ion-item>
-    <h2>iminds30@gmail.com</h2>
-    <button ion-button clear item-end>   <ion-icon name="mail"></ion-icon></button>
-  </ion-item>
-</ion-list>
-  </ion-card-content>
-</ion-card>
-  </ion-list>
-</div>
+      <ion-item *ngIf="n.phone1 !=''">
+        <h2>{{n.phone1}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="call"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.phone2 !=''">
+        <h2>{{n.phone2}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="call"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.phone3 !=''">
+        <h2>{{n.phone3}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="call"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.phone4 !=''">
+        <h2>{{n.phone4}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="call"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.email1 !=''">
+        <h2>{{n.email1}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="mail"></ion-icon>
+        </button>
+      </ion-item>
+
+
+
+      <ion-item *ngIf="n.email2 !=''">
+        <h2>{{n.email2}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="mail"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.email3 !=''">
+        <h2>{{n.email3}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="mail"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item *ngIf="n.email4 !=''">
+        <h2>{{n.email4}}</h2>
+        <button ion-button clear item-end>
+          <ion-icon name="mail"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
 
 
 </ion-content>

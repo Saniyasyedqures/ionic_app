@@ -7,49 +7,64 @@
 <ion-header>
 
   <ion-navbar>
-  <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="md-more"></ion-icon>
     </button>
-     <ion-title>Register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <form #form="ngForm" (ngSubmit)="registerForm(form)" novalidate>
-      <ion-item>
-        <ion-label>Name*</ion-label>
-        <ion-input type="text" required [(ngModel)]="todo.name" ngControl="name" name="name"></ion-input>
-      </ion-item>
-         <ion-item>
-        <ion-label>DOB</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="todo.dob" ngControl="dob" name="dob"></ion-datetime>
-      </ion-item>
-        <ion-item>
-        <ion-label>Photo</ion-label>
-        <ion-input type="file" [(ngModel)]="todo.photo" ngControl="photo" name="photo"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Address*</ion-label>
-        <ion-textarea [(ngModel)]="todo.address" ngControl="address" required name="address"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label>Pincode*</ion-label>
-        <ion-input type="number" required [(ngModel)]="todo.pincode" ngControl="pincode" name="pincode"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Phone*</ion-label>
-        <ion-input type="text" required [(ngModel)]="todo.phone" ngControl="phone" name="phone"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Email*</ion-label>
-        <ion-input type="email" required [(ngModel)]="todo.email" ngControl="email" name="email"></ion-input>
-      </ion-item>
-      <div class="col">
-        <br><br>
+  <form #form="ngForm" (ngSubmit)="registerForm(form)">
+    <ion-item>
+      <ion-label>Name*</ion-label>
+      <ion-input type="text" required [(ngModel)]="todo.name" ngControl="name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>DOB</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="todo.dob" ngControl="dob" name="dob"></ion-datetime>
+    </ion-item>
+       <ion-item (click)="openImg()">
+      <ion-label style="color: #999;">Photo</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Branch</ion-label>
+      <ion-select [(ngModel)]="branch" name="branches">
+        <ion-option value="karannagar">Karannagar</ion-option>
+        <ion-option value="nowgam">Nowgam</ion-option>
+        <ion-option value="parraypora">Parraypora</ion-option>
+        <ion-option value="baramulla">Baramulla</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Address*</ion-label>
+      <ion-textarea [(ngModel)]="todo.address" ngControl="address" required name="address"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pincode*</ion-label>
+      <ion-input type="number" required [(ngModel)]="todo.pincode" ngControl="pincode" name="pincode"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Phone*</ion-label>
+      <ion-input type="text" required [(ngModel)]="todo.phone" ngControl="phone" name="phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email*</ion-label>
+      <ion-input type="email" required [(ngModel)]="todo.email" ngControl="email" name="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Course Applied For*</ion-label>
+      <ion-input type="text" required [(ngModel)]="todo.course" ngControl="course" name="course"></ion-input>
+    </ion-item>
+ 
+    <div class="col">
+      <br>
+      <br>
       <button ion-button type="submit" block class="submit">Submit</button>
-      </div>
-    </form>
+    </div>
+  </form>
 
 </ion-content>

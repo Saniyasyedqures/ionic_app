@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AboutUsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'page-about-us',
@@ -14,11 +9,30 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AboutUsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  aboutUs: any;
+  loading: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public loadingCtrl: LoadingController) {
+    this.presentLoadingDefault();
+    this.http.get('http://igapi.ignitedminds.net/api/index.php?page=getAbout').map(res => res.json()).subscribe(data => {
+      this.aboutUs = data[0].content;
+      this.endLoading();
+
+    });
+  }
+
+
+  presentLoadingDefault() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
+  }
+  endLoading() {
+    this.loading.dismiss();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutUsPage');
+    console.log('ionViewDidLoad CoursesPage');
   }
 
 }
